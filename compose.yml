@@ -1,0 +1,19 @@
+---
+version: "3.8"
+
+services:
+  python:
+    build: docker/python
+    tty: true
+    stdin_open: true
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/home/python
+
+  postgresql:
+    image: postgres:16.2-alpine3.19
+    environment:
+      POSTGRES_DB: fastapi
+      POSTGRES_USER: fastapi
+      POSTGRES_PASSWORD: fastapi
